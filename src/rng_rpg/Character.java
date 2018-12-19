@@ -17,14 +17,14 @@ import java.awt.image.BufferedImageOp;
  */
 public class Character {
     //no-args Consturctor
-    private int x;
-    private int y;
+    int x;
+    int y;
     private int dx;
     private int dy;
-    private Color color;
-    private int size;
-    private String name;
-    private BufferedImage charImage;
+    Color color;
+    int size;
+    String name;
+    BufferedImage charImage;
      private BufferedImage monster;
     int health;
     

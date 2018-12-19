@@ -19,11 +19,13 @@ import java.awt.image.BufferedImage;
  * @author Elizabeth Mertens
  */
 public class Hero extends Character {
+
+    
  
     //fields 
     //(Variables/attributes) (defines things)
 
-    private int health;
+    int health;
     
     //constructor
     public Hero(){
@@ -31,18 +33,18 @@ public class Hero extends Character {
      health=500;
     }
     
-//    public Hero(int x, int y, Color color, int size, String name, BufferedImage charImage){
-//        super(x,y,color,size,name,charImage);
-//        health=500;
-//    }
-//
-//    Hero(int i, int i0, Color CYAN, int i1, String dude) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+    public Hero(int x, int y, Color color, int size, String name, BufferedImage charImage){
+        super(x,y,color,size,name,charImage);
+        health=500;
+    }
+
+    Hero(int i, int i0, Color CYAN, int i1, String dude) {
+       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
     
-    
+    static String getHealth;
     public int getHealth(){
        return health; 
     }
@@ -60,10 +62,19 @@ public class Hero extends Character {
         
     }
     
+     public void damage () {
+        health += -50;
+    }
 
     private void run () {
        
     }
     
-    
+      void kill() {
+        while (health == 0){
+            x = 10000;
+        } 
+        
+    } 
+      
 }

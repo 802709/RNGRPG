@@ -39,5 +39,14 @@ public class Enemy extends Character{
     public int getHealth(){
        return health; 
     }
-         
+
+    void kill() {
+       while (health == 0){
+            x = 10000;
+        } 
+    }
+    
+     public void damage () {
+        health += -50;
+    }
 }

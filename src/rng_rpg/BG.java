@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 /**
  *
  * @author 802709
@@ -32,7 +33,7 @@ public class BG extends JPanel {
         BufferedImage monster = null;
         BufferedImage charImage = monster;
         hero = new Hero(600, 480, Color.CYAN, 20, "dude", charImage);
-        enemy = new Enemy (50, 50, Color.RED, 20, "Enemy");
+        enemy = new Enemy (50, 50, Color.RED, 20, "Enemy", charImage);
         timer = new Timer () ;      
         timer.scheduleAtFixedRate(new ScheduleTask(), 100, 1000/20);
 }
@@ -46,7 +47,7 @@ public class BG extends JPanel {
          g.setColor(Color.GREEN);
 
 //         
-//         drawGreenDots(g);
+         drawGreenDots(g);
          
          hero.draw(g);
          enemy.draw(g);
@@ -113,30 +114,30 @@ public class BG extends JPanel {
     
     
     
-//   public void drawGreenDots(Graphics g) {
-//       int x = 0;
-//       int y = 0;
-//       for (int i  =  0;  i < 100; i++) {
-//       
-//       int rand1 = (int) (Math.random() * 960)  ;
-//       int rand2 = (int) (Math.random() * 1200)  ;
-//       
-//        x = rand1 ;
-//        y = rand2;
-//        
-//        g.fillOval (x , y , 10, 10);
-//        
-//        Color curr = g.getColor();
-//          if (x % 2 == 0) 
-//              g.setColor(curr.brighter());
-//          else
-//              g.setColor(curr.darker());
-//          g.fillOval(x, y, 3, 3);
-//        
-//        
-//        System.out.println(rand1+" "+rand2);   
-//        }
-//        }
+   public void drawGreenDots(Graphics g) {
+       int x = 0;
+       int y = 0;
+       for (int i  =  0;  i < 100; i++) {
+       
+       int rand1 = (int) (Math.random() * 960)  ;
+       int rand2 = (int) (Math.random() * 1200)  ;
+       
+        x = rand1 ;
+        y = rand2;
+        
+        g.fillOval (x , y , 10, 10);
+        
+        Color curr = g.getColor();
+          if (x % 2 == 0) 
+              g.setColor(curr.brighter());
+          else
+              g.setColor(curr.darker());
+          g.fillOval(x, y, 3, 3);
+        
+        
+        System.out.println(rand1+" "+rand2);   
+        }
+        }
     
     
 //   
@@ -153,25 +154,51 @@ public class BG extends JPanel {
         }
     }
     
-    
-    
-     private void battleEvent() {
-              hero.setX(100);
-            hero.setY(500);
-            enemy.setX(600);
-            enemy.setY(500);
-                //MP.JFrame.open;
-         MPMain.setVisible(true);
-            }
-     
-      private void heroVsEnemy () {
+     private void heroVsEnemy () {
         if (hero.getX()+ 40 >= enemy.getX() && hero.getY() + 40 >= enemy.getY()) {
             if (hero.getX() <= enemy.getX() + 40 && hero.getY() <= enemy.getY() + 40) {
-              //  battleEvent() = true;
+              battleEvent(true);
              
             }
         }
        }
+    
+     private void battleEvent(boolean battlevar) {
+              hero.setX(100);
+            hero.setY(500);
+            enemy.setX(600);
+            enemy.setY(500);
+            
+            hero.setDX(0);
+            hero.setDY(0);
+            enemy.setDX(0);
+            enemy.setDY(0);
+     
+        Problems problems = new Problems();
+         problems.setVisible(true);
+//         problems.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+if (ansChecker(true)){
+    enemy.damage();
+}
+else if (ansChecker(false)){
+   hero.damage();
+}
+
+
+            }
+     private boolean ansChecker(boolean battlevar){
+     if (Problems.ansBox.getText().equals("correct")){
+    return true;
+} 
+else if (Problems.ansBox.equals("incorrect")){
+      return false;  
+        
+     }
+     return battlevar;
+     }
+     
+     
       
         }
        

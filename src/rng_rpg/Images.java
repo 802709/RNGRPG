@@ -17,7 +17,7 @@ public class Images {
             BufferedImage img = new BufferedImage( 
                 500, 500, BufferedImage.TYPE_INT_RGB );
 
-            File f = new File("MyFile.png");
+            File f = new File("MathMan.png");
             int r = 5;
             int g = 25;
             int b = 255;
